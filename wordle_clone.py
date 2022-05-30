@@ -1,3 +1,10 @@
+"""
+This program replicates the popular game Wordle. Text only.
+The game indicates a guess's letter is in the correct position by converting it to upper-case.
+An asterick (*) beside a letter means that letter is in the answer,
+But not at its position within the player's guess.
+"""
+
 import random
 import string
 
@@ -41,15 +48,11 @@ while NUM_TRIES < 5:
     guessLetters = list(guess)
     i = 0
     for l in guessLetters:
-        if l == secretLetters[i]:
-            guessLetters[i] = guessLetters[
-                i
-            ].upper()  ### Letter in answer at correct position
+        if l == secretLetters[i]:  ### Letter in answer at correct position
+            guessLetters[i] = guessLetters[i].upper()
         else:
-            if l in secretLetters:
-                guessLetters[i] = (
-                    l + "*"
-                )  ### Letter in answer at incorrect position
+            if l in secretLetters:  ### Letter in answer at incorrect position
+                guessLetters[i] = l + "*"
             else:  ### Letter not in answer
                 wrongLetters.append(l)
                 if l in availLetters:
