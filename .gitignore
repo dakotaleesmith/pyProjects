@@ -1,2 +1,4 @@
-.vscode/
+.vscode/*
 .env
+/Users/dakotaleesmith/pyProjects/.vscode
+/Users/dakotaleesmith/pyProjects/.vscode/settings.json
