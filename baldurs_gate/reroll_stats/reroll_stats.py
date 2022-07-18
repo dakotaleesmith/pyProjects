@@ -44,3 +44,5 @@ print(f"Number of clicks: {clicks}")
 
 ### Insert code here that deletes the final screenshot
 ### Or refactor so the file is stored in memory rather than in the directory
+
+### Also consider giving the user the option to set their total stat threshold
