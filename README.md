@@ -1,3 +1,3 @@
 # pyProjects
 
-General-purpose repository for small projects I'm working on to improve my Python skills.
+A collection of finished and unfinished projects I'm working on to improve my Python skills.
