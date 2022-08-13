@@ -12,3 +12,4 @@ class Settings:
         # Puppy settings
         self.puppy_width = 105
         self.puppy_height = 128
+        self.puppy_speed = 5.5
