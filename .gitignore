@@ -160,5 +160,13 @@ cython_debug/
 #.idea/
 
 # Custom
+.DS_Store
 .vscode
 scratch_paper.ipynb
+chalkboard.py
+.sh
+matrix/
+story_generator/
+book_scraper/
+wordle/
+baldurs_gate/
