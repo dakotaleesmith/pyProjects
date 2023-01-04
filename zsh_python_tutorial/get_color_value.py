@@ -1,3 +1,15 @@
+"""
+Example script for use in article showing how to call Python
+scripts on the command line.
+
+This script is called with the custom get_color zsh function
+by adding the following to your .zshrc file:
+
+function get_color() {
+	python3 /Users/dakotaleesmith/pyProjects/zsh_python_tutorial/get_color_value.py "$1"
+}
+"""
+
 import json
 from sys import argv
 from insert_data import file_path

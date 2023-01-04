@@ -1,3 +1,9 @@
+"""
+This script loads the sample data used in get_color_value.py.
+
+To get working on local machine, change file_path to local directory.
+"""
+
 import json
 
 file_path = "/Users/dakotaleesmith/pyProjects/zsh_python_tutorial/sample_data.json"
