@@ -1,3 +1,3 @@
 # pyProjects
 
-A collection of finished and unfinished projects I'm working on to improve my Python skills.
+A collection of finished and unfinished projects used in articles and to improve my own Python skills.
