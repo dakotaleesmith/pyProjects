@@ -5,8 +5,10 @@ scripts on the command line.
 This script is called with the custom get_color zsh function
 by adding the following to your .zshrc file:
 
-function get_color() {
-	python3 /Users/dakotaleesmith/pyProjects/zsh_python_tutorial/get_color_value.py "$1"
+get_color() {
+	cd /Users/dakotaleesmith/pyProjects
+	python3 zsh_python_tutorial/get_color_value.py "$1"
+	cd ~
 }
 """
 

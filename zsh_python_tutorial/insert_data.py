@@ -6,7 +6,7 @@ To get working on local machine, change file_path to local directory.
 
 import json
 
-file_path = "/Users/dakotaleesmith/pyProjects/zsh_python_tutorial/sample_data.json"
+file_path = "zsh_python_tutorial/sample_data.json"
 
 
 def write_sample(json_data: list) -> json:
