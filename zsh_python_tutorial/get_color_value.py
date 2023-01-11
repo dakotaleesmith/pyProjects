@@ -17,7 +17,7 @@ from sys import argv
 from insert_data import file_path
 
 
-def get_data() -> json:
+def get_data() -> list:
     with open(file_path, "r") as f:
         return json.load(f)
 
@@ -34,6 +34,6 @@ def get_color_value(color: str) -> dict:
 
 
 if __name__ == "__main__":
-    color = str(argv[1])
+    color = argv[1]
     value = get_color_value(color)
     print(value)
