@@ -171,3 +171,5 @@ book_scraper/
 wordle/
 baldurs_gate/
 reddit/
+local_mysql.py
+pokemon/individual_pokemon/
