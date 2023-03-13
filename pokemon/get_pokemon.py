@@ -89,7 +89,6 @@ def _format_results(type_eff: list) -> None:
         else:
             relationship = relationships["weak"]
         REL_ALIGNMENT = len(max(list(relationships.values()), key=len))
-        # TYPE_ALIGNMENT = 
         formatted_results += f"{relationship:<{REL_ALIGNMENT}} {poketype.title():<{POKETYPE_ALIGNMENT}}: {effectiveness}\n"
     return formatted_results
 
