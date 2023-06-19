@@ -4,10 +4,8 @@ import duckdb
 import typer
 from rich import print
 
-POKEDATA_FILEPATH = "data/pokedata.json"
-TYPES_EFF_FILEPATH = "data/types_parsed_long.csv"
-
-app = typer.Typer()
+POKEDATA_FILEPATH = "/Users/dakotaleesmith/pyProjects/pokemon/data/pokedata.json"
+TYPES_EFF_FILEPATH = "/Users/dakotaleesmith/pyProjects/pokemon/data/types_parsed_long.csv"
 
 
 def _validate_pokemon(name: str) -> bool:
@@ -62,7 +60,7 @@ def _get_type_effectiveness_query(types: list) -> str:
     """
 
 
-def _get_pokemon_types(name: str) -> duckdb.DuckDBPyRelation:
+def _get_pokemon_types(name: str) -> list:
     query = _get_types_query(name)
     return duckdb.sql(query).fetchone()[0]
 
@@ -75,13 +73,13 @@ def _get_pokemon_type_eff(types: list) -> list:
 def _format_results(type_eff: list) -> None:
     formatted_results = ""
     POKETYPE_ALIGNMENT = len(max([i[0] for i in type_eff], key=len))
+    relationships = {
+        "no_damage": "NO DAMAGE from",
+        "resistant": "RESISTANT against",
+        "weak": "WEAK to",
+    }
     for i in type_eff:
         poketype, effectiveness = i[0], i[1]
-        relationships = {
-            "no_damage":"NO DAMAGE from",
-            "resistant":"RESISTANT against",
-            "weak":"WEAK to"
-        }
         if effectiveness == 0.0:
             relationship = relationships["no_damage"]
         elif effectiveness < 1.0:
@@ -93,13 +91,27 @@ def _format_results(type_eff: list) -> None:
     return formatted_results
 
 
-@app.command()
-def get_pokemon_type_effectiveness(name: str) -> None:
-    types = _get_pokemon_types(name)
-    type_eff = _get_pokemon_type_eff(types)
+def get_pokemon_type_effectiveness(
+    name: str,
+    tera: str = typer.Option("", help="Tera type of Pokemon, if terastallized.")
+):
+    if tera:
+        query = f"""
+        SELECT opposing_type, effectiveness_multiplier
+        FROM "{TYPES_EFF_FILEPATH}"
+        WHERE 
+            type = '{tera}'
+            AND effectiveness_multiplier != 1.00
+        ORDER BY effectiveness_multiplier DESC, opposing_type
+        ;
+        """
+        type_eff = duckdb.sql(query).fetchall()
+    else:
+        types = _get_pokemon_types(name)
+        type_eff = _get_pokemon_type_eff(types)
     results = _format_results(type_eff)
     print(f"\n{results}")
 
 
 if __name__ == "__main__":
-    app()
+    typer.run(get_pokemon_type_effectiveness)
