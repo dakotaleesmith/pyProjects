@@ -1,1 +1,0 @@
-SELECT JSON_LENGTH(JSON_ARRAY("foo", "bar", "hello", "world"));
